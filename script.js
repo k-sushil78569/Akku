@@ -7,6 +7,15 @@ let currentNoteIndex = 0;
 let scale = 1.0;
 let noClickCount = 0;
 
+// Setup local MP3 player with automatic fallback to Web Audio synth
+let audioObj = new Audio('song.mp3');
+audioObj.loop = true;
+let useMp3 = true;
+
+audioObj.addEventListener('error', () => {
+  useMp3 = false; // Fallback to synthesized music if file doesn't exist
+});
+
 // Emojis for falling/floating animations
 const PARTICLE_EMOJIS = ['❤️', '💖', '✨', '🌸', '🎈', '🍰', '🎁', '⭐'];
 
@@ -138,25 +147,38 @@ function toggleMusic() {
   const icon = musicBtn.querySelector('.music-icon');
   const text = musicBtn.querySelector('.music-text');
   
-  initAudio();
-  
   if (isPlaying) {
     isPlaying = false;
-    clearTimeout(synthInterval);
+    if (useMp3) {
+      audioObj.pause();
+    } else {
+      clearTimeout(synthInterval);
+    }
     icon.innerText = '🔇';
     text.innerText = 'Music Off';
     musicBtn.classList.remove('pulse-glow');
   } else {
-    // Resume audio context if suspended (browser security)
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
     isPlaying = true;
-    currentNoteIndex = 0;
     icon.innerText = '🎵';
     text.innerText = 'Playing Song';
     musicBtn.classList.add('pulse-glow');
-    playNextNote();
+    
+    if (useMp3) {
+      audioObj.play().catch(err => {
+        console.log("MP3 play failed, falling back to synth:", err);
+        useMp3 = false;
+        initAudio();
+        currentNoteIndex = 0;
+        playNextNote();
+      });
+    } else {
+      initAudio();
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      currentNoteIndex = 0;
+      playNextNote();
+    }
   }
 }
 
