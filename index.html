@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday to My Amazing Sis, Akku! 🎉</title>
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="A special, highly interactive birthday surprise website made just for my amazing sister Akku (Akshara)!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Ambient Particles Container -->
+  <div id="particles-container"></div>
+
+  <!-- Music Floating Controller -->
+  <button id="music-toggle" aria-label="Toggle Background Music" class="music-btn pulse-glow">
+    <span class="music-icon">🎵</span>
+    <span class="music-text">Play Song</span>
+  </button>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- STAGE 1: THE GIFT BOX -->
+    <section id="stage-gift" class="stage active">
+      <div class="glass-card text-center">
+        <h1 class="font-serif main-title">Happy Birthday, Akku! 🎂</h1>
+        <p class="subtitle">A special, magical surprise is waiting inside this box just for you. Tap it to open! ✨</p>
+        
+        <div class="gift-box-wrapper">
+          <div class="gift-box" id="gift-box">
+            <div class="gift-lid"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+            <div class="gift-bow"></div>
+            <div class="gift-body"></div>
+          </div>
+        </div>
+        
+        <p class="click-instruction">Click the box to unlock your surprise!</p>
+      </div>
+    </section>
+
+    <!-- STAGE 2: THE SISTER VERIFICATION QUIZ -->
+    <section id="stage-quiz" class="stage">
+      <div class="glass-card">
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="quiz-progress"></div>
+        </div>
+        
+        <h2 class="stage-title font-serif text-center" id="quiz-title">Akku Security Check 🔒</h2>
+        <p class="text-center quiz-subtitle" id="quiz-desc">Please verify your identity to proceed to your birthday message.</p>
+
+        <div class="quiz-question-container">
+          <div class="quiz-question active" data-step="1">
+            <p class="question-text text-center">Are you officially the absolute coolest and most amazing sister (Akku) in the entire universe?</p>
+            <div class="quiz-options">
+              <button class="btn btn-primary quiz-opt-btn" data-correct="yes">Obviously, YES! 😎</button>
+              <button class="btn btn-secondary quiz-opt-btn" data-correct="modest">Maybe a little? 🤭</button>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="2">
+            <p class="question-text text-center">What is your current birthday energy vibe?</p>
+            <div class="quiz-options">
+              <button class="btn btn-primary quiz-opt-btn">Eat all the cake & treats! 🍰</button>
+              <button class="btn btn-primary quiz-opt-btn">Be pampered like a Queen! 👑</button>
+              <button class="btn btn-primary quiz-opt-btn">Sleep for a solid 24 hours! 😴</button>
+            </div>
+          </div>
+
+          <div class="quiz-question" data-step="3">
+            <p class="question-text text-center">If you could have any superpower today, what would it be?</p>
+            <div class="quiz-options">
+              <button class="btn btn-primary quiz-opt-btn">Teleport to a gorgeous beach 🏖️</button>
+              <button class="btn btn-primary quiz-opt-btn">Unlimited shopping budget 💸</button>
+              <button class="btn btn-primary quiz-opt-btn">Make calories instantly vanish 🍕</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="quiz-feedback" class="quiz-feedback text-center hidden">
+          <p class="feedback-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: THE MEMORY POLAROID DECK -->
+    <section id="stage-polaroids" class="stage">
+      <div class="polaroid-wrapper">
+        <h2 class="stage-title font-serif text-center color-gold">A Few Reasons You're The Best... ✨</h2>
+        
+        <div class="polaroid-deck">
+          <!-- Card 1 -->
+          <div class="polaroid-card active" data-index="0">
+            <div class="polaroid-img-placeholder design-bg-1">
+              <span class="polaroid-emoji">🌸</span>
+            </div>
+            <div class="polaroid-caption">
+              <h3>Akku, Partner In Crime 👯‍♀️</h3>
+              <p>From late-night snack raids to sharing secrets we shouldn't tell anyone, everything is just ten times more fun with you around!</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="polaroid-card" data-index="1">
+            <div class="polaroid-img-placeholder design-bg-2">
+              <span class="polaroid-emoji">💖</span>
+            </div>
+            <div class="polaroid-caption">
+              <h3>Akshara, The Kindest Soul 🌟</h3>
+              <p>You have a heart of gold. You always listen, give the best advice, and lift everyone up when they need it most.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="polaroid-card" data-index="2">
+            <div class="polaroid-img-placeholder design-bg-3">
+              <span class="polaroid-emoji">🥳</span>
+            </div>
+            <div class="polaroid-caption">
+              <h3>Contagious Joy 😂</h3>
+              <p>Your laughter is infectious (even when you're laughing at me). Life with you is a constant adventure filled with inside jokes!</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="polaroid-card" data-index="3">
+            <div class="polaroid-img-placeholder design-bg-4">
+              <span class="polaroid-emoji">👑</span>
+            </div>
+            <div class="polaroid-caption">
+              <h3>Queen Akku Today 🎂</h3>
+              <p>Today, you deserve the ultimate pampering. May this year ahead be filled with big dreams coming true and absolute happiness!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="deck-controls">
+          <button id="next-card-btn" class="btn btn-primary pulse-btn">Next Reason →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 4: THE LOVE TEST (RUNAWAY BUTTON) -->
+    <section id="stage-feedback" class="stage">
+      <div class="glass-card text-center relative-container">
+        
+        <div id="final-question-view">
+          <span class="big-emoji">🥺</span>
+          <h2 class="stage-title font-serif">One Last Thing...</h2>
+          <p class="subtitle">Did you enjoy this birthday surprise page?</p>
+          
+          <div class="action-buttons" id="runaway-container">
+            <button id="yes-btn" class="btn btn-success btn-lg">Yes! ❤️</button>
+            <button id="no-btn" class="btn btn-danger btn-lg">No 💔</button>
+          </div>
+          <div id="runaway-warn-message" class="warn-message"></div>
+        </div>
+
+        <!-- Hidden Sweet Letter (Revealed after clicking YES) -->
+        <div id="sweet-letter-view" class="hidden scale-up-center">
+          <div class="letter-envelope">
+            <div class="heart-seal">❤️</div>
+          </div>
+          <div class="letter-content">
+            <h3 class="font-serif letter-title">Dear Akku (Akshara), 💌</h3>
+            <p class="letter-text">
+              I wanted to build something special and unique just for your birthday to show you how much you mean to me. 
+              You are not just my sister, but one of the greatest friends I could ever ask for. 
+            </p>
+            <p class="letter-text">
+              Thank you for being you, for all the laughter, and for always having my back. 
+              May this new age bring you boundless joy, beautiful surprises, and all the love you deserve.
+            </p>
+            <p class="letter-text font-serif signature">
+              Happy Birthday! With lots of love, <br>
+              Your Brother (Spiderfury) 🕷️❤️
+            </p>
+          </div>
+          
+          <button id="restart-btn" class="btn btn-secondary btn-sm" style="margin-top: 2rem;">Play Again 🔄</button>
+        </div>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
